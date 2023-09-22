@@ -27,6 +27,8 @@ import knockoff.utils.utils as knockoff_utils
 from knockoff.victim.blackbox import Blackbox
 import knockoff.config as cfg
 
+from knockoff.adversary.adaptive import AdaptiveAdversary
+
 __author__ = "Tribhuvanesh Orekondy"
 __maintainer__ = "Tribhuvanesh Orekondy"
 __email__ = "orekondy@mpi-inf.mpg.de"
@@ -152,7 +154,7 @@ def main():
     if params['policy'] == 'random':
         adversary = RandomAdversary(blackbox, queryset, batch_size=batch_size)
     elif params['policy'] == 'adaptive':
-        raise NotImplementedError()
+        adversary = AdaptiveAdversary(blackbox, queryset, batch_size=batch_size)
     else:
         raise ValueError("Unrecognized policy")
 

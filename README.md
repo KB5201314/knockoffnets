@@ -154,3 +154,20 @@ If you found this work or code useful, please cite us:
 
 ## Contact
 In case of feedback, suggestions, or issues, please contact [Tribhuvanesh Orekondy](https://tribhuvanesh.github.io/)
+
+
+## imlk
+
+```bash
+# random
+python -m knockoff.adversary.transfer random models/victim/cubs200-resnet34 --out_dir models/adversary/cubs200-resnet34-random --budget 5000 --queryset ImageNet1k --batch_size 8 -d 2
+# adaptive
+python -m knockoff.adversary.transfer adaptive models/victim/cubs200-resnet34 --out_dir models/adversary/cubs200-resnet34-adaptive --budget 5000 --queryset ImageNet1k --batch_size 8 -d 2
+
+
+# train on random transferset
+python -m knockoff.adversary.train models/adversary/cubs200-resnet34-random resnet34 CUBS200 --budgets 5000 -d 0 --pretrained imagenet --log-interval 100 --epochs 200 --lr 0.01
+
+python -m knockoff.adversary.train models/adversary/cubs200-resnet34-adaptive resnet34 CUBS200 --budgets 5000 -d 0 --pretrained imagenet --log-interval 100 --epochs 200 --lr 0.01
+
+```
